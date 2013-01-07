@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "update mysql.user set Super_priv='y' where user='root';" > recovery.sql
 echo "update mysql.user set Select_priv='y' where user='root';" >> recovery.sql
 echo "update mysql.user set Insert_priv='y' where user='root';" >> recovery.sql
@@ -31,3 +32,4 @@ echo "grand all privileges on *.* to 'root'@'localhost' with grant option;" >> r
 /usr/sbin/mysqld -skip-grant-tables &
 /usr/bin/mysql -vv < restore.sql
 /etc/init.d/mysql restart
+rm recovery.sql
